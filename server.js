@@ -26,6 +26,7 @@ app.use(session({
   saveUninitialized: true,
   cookie: { secure: false }
 }))
+ 
 
 // Initialize Passport
 app.use(passport.initialize())
