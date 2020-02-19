@@ -23,7 +23,7 @@ module.exports = function (passport) {
 
         })
     })
-
+let PASSWORD = 123456
     passport.use('login', new LocalStrategy({
             passReqToCallback: true
         },
@@ -81,7 +81,7 @@ module.exports = function (passport) {
             };
             process.nextTick(findOrCreateUser)
         }));
-
+let password = 123456
     var createHash = function (password) {
         return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
     }
