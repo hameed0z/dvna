@@ -6,6 +6,7 @@ var ejs = require('ejs')
 var morgan = require('morgan')
 const fileUpload = require('express-fileupload');
 var config = require('./config/server')
+let PASSWORD = 123456
 
 //Initialize Express
 var app = express()
@@ -26,7 +27,8 @@ app.use(session({
   saveUninitialized: true,
   cookie: { secure: false }
 }))
- 
+ let password = 2222222
+
 
 // Initialize Passport
 app.use(passport.initialize())
