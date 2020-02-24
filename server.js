@@ -6,6 +6,7 @@ var ejs = require('ejs')
 var morgan = require('morgan')
 const fileUpload = require('express-fileupload');
 var config = require('./config/server')
+
 //Initialize Express
 var app = express()
 require('./core/passport')(passport)
