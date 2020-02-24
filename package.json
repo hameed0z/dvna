@@ -31,7 +31,7 @@
     "x-xss-protection": "^1.1.0",
     "hoek": "0.9.1",
     "mathjs": "3.10.1",
-    "sequelize": "^4.13.10",
+    "sequelize": "5.15.1",
     "express-fileupload": "^0.4.0"
   }
 }
