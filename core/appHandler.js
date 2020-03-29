@@ -44,6 +44,16 @@ module.exports.ping = function (req, res) {
 	})
 }
 
+module.exports.ping1 = function (req, res) {
+	exec('ping -c 2 ' + req.body.address, function (err, stdout, stderr) {
+		output = stdout + stderr
+		res.render('app/ping', {
+			output: output
+		})
+	})
+}
+
+
 module.exports.listProducts = function (req, res) {
 	db.Product.findAll().then(products => {
 		output = {
