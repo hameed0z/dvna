@@ -38,6 +38,28 @@ module.exports.forgotPw = function (req, res) {
 	}
 }
 
+module.exports.forgotPw1 = function (req, res) {
+	if (req.body.login) {
+		db.User.find({
+			where: {
+				'login': req.body.login
+			}
+		}).then(user => {
+			if (user) {
+				// Send reset link via email happens here
+				req.flash('info', 'Check email for reset link')
+				res.redirect('/login')
+			} else {
+				req.flash('danger', "Invalid login username")
+				res.redirect('/forgotpw')
+			}
+		})
+	} else {
+		req.flash('danger', "Invalid login username")
+		res.redirect('/forgotpw')
+	}
+}
+
 module.exports.resetPw = function (req, res) {
 	if (req.query.login) {
 		db.User.find({
