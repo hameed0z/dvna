@@ -125,3 +125,31 @@ module.exports.resetPwSubmit = function (req, res) {
 		res.redirect('/forgotpw')
 	}
 }
+
+module.exports.resetPw1 = function (req, res) {
+	if (req.query.login) {
+		db.User.find({
+			where: {
+				'login': req.query.login
+			}
+		}).then(user => {
+			if (user) {
+				if (req.query.token == md5(req.query.login)) {
+					res.render('resetpw', {
+						login: req.query.login,
+						token: req.query.token
+					})
+				} else {
+					req.flash('danger', "Invalid reset token")
+					res.redirect('/forgotpw')
+				}
+			} else {
+				req.flash('danger', "Invalid login username")
+				res.redirect('/forgotpw')
+			}
+		})
+	} else {
+		req.flash('danger', "Non Existant login username")
+		res.redirect('/forgotpw')
+	}
+}
